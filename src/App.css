@@ -1,3 +1,7 @@
+body{
+  font-family: 'Freckle Face', cursive;
+}
+
 .App {
   position: absolute;
   top: 0;
@@ -14,7 +18,7 @@
   background-color: #222;
   height: 20%;
   color: white;
-  padding-top:4.6%;
+  padding-top:2.6%;
   min-height: 150px;
 }
 
@@ -112,7 +116,7 @@
 
 @media (min-width:401px)  { 
   .level {
-    top: 5px !important;
+    top: 3px !important;
   }
 }
 
@@ -179,6 +183,27 @@ input:checked + .slider:before {
   border-radius: 50%;
   position: absolute;
   z-index: 3;
+}
+
+.strict-mode {
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  margin-left: 20px;
+  margin-top: 5px;
+  cursor: pointer;
+  z-index: 15;
+}
+
+.strict-text{
+  position: absolute;
+  left: 140%;
+  top: 10%;
+  width: 20px;
+  height: 20px;
+  font-size: 1.3em;
 }
 
 .noselect {

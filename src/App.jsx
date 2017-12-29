@@ -37,7 +37,9 @@ class App extends Component {
       clickFlowPlayer: [],
       level: 0,
       boardState: 'board-game-off',
-      solved: false
+      solved: false,
+      strict: false,
+      strictAudio: "https://sound.peal.io/ps/audios/000/000/535/original/That's_retarded.wav?1469744207"
     }
   }
 
@@ -134,12 +136,16 @@ class App extends Component {
       that.setState({clickFlowPlayer});
       that.changeColorSlide('green');
     } else {
-      that.setState({boardState: 'board-game-off'});
-      that.changeColorSlide('red');
-      setTimeout(function() {
-        that.changeColorSlide('white'); 
-        that.randomPress();     
-      }, 500);
+        that.setState({boardState: 'board-game-off'});
+        that.changeColorSlide('red');
+        setTimeout(function() {
+          that.changeColorSlide('white'); 
+          that.randomPress();     
+        }, 500);
+
+        if (this.state.strict) {
+          this.restartGame();
+        }
     }
 
     if(clickFlowPlayer.length === 0){
@@ -170,6 +176,12 @@ class App extends Component {
     }
   }
 
+  changeStrictMode() {
+    this.setState({ strict: this.state.strict === true ? false : true });
+    let audio = new Audio(this.state.strictAudio);
+    audio.play();
+  }
+
   render() {
     const buttons = this.state.buttons;
     return (
@@ -183,6 +195,11 @@ class App extends Component {
               <span className="slider round" ></span>
             <span className="level noselect">{this.state.level}</span>
             </label>
+            <span className="strict-mode" 
+              onClick = { () => this.changeStrictMode()}
+              style = { {backgroundColor: this.state.strict === true ? 'red' : 'white'} }>
+              <span className="strict-text">Strict</span> 
+            </span>
           </div>
         </header>
         <div className={this.state.boardState}>
