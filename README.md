@@ -1,2 +1,2 @@
 # simon-game
-Simon Game projecto for FreeCodeCamp
+Simon Game project for FreeCodeCamp
