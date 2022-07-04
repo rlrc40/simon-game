@@ -11,25 +11,25 @@ class App extends Component {
           element: 'btn_0',
           color: 'red',
           audio: 'https://sound.peal.io/ps/audios/000/003/334/original/youtube.mp3?1503053595',
-          img: 'http://image.ibb.co/mL4qcG/pickle_rick.png'
+          img: 'pickle-rick.png'
         },
         {
           element: 'btn_1',
           color: 'blue',
           audio: 'https://sound.peal.io/ps/audios/000/000/536/original/Awww_Bitch.wav?1469744431',
-          img: 'http://image.ibb.co/djsbHG/Scary_Terry.png'
+          img: 'scary-terry.png'
         },
         {
           element: 'btn_2',
           color: 'green',
           audio: 'https://sound.peal.io/ps/audios/000/000/553/original/oh_man.wav?1469744452',
-          img: 'http://preview.ibb.co/iT4OxG/Morty.png'
+          img: 'morty.png'
         },
         {
           element: 'btn_3',
           color: 'yellow',
           audio: "https://sound.peal.io/ps/audios/000/000/548/original/Hi_I'm_mr_meeseeks_look_at_me.wav?1469744301",
-          img: 'http://preview.ibb.co/kHnXrb/meeseeks.png'
+          img: 'meeseeks.png'
         }
       ],
       gameState: 'off',
@@ -41,13 +41,6 @@ class App extends Component {
       strict: false,
       strictAudio: "https://sound.peal.io/ps/audios/000/000/535/original/That's_retarded.wav?1469744207"
     }
-  }
-
-  componentDidMount() {
-  }
-
-  componentDidUpdate() {
-    console.log(this.state.clickFlow);
   }
 
   setGameState() {
@@ -182,6 +175,12 @@ class App extends Component {
     audio.play();
   }
 
+  changeSimonButton(button, simonButton) {
+    const newState = this.state;
+    newState.buttons[button].element = simonButton;
+    this.state = newState;
+  }
+
   render() {
     const buttons = this.state.buttons;
     return (
@@ -213,7 +212,7 @@ class App extends Component {
                   >
                   <SimonButton 
                     button = {this.state.buttons[b]} 
-                    ref={(simonButton) => { this.state.buttons[b].element = simonButton }} 
+                    ref={(simonButton) => this.changeSimonButton(b, simonButton)} 
                   />
                 </div>
               )

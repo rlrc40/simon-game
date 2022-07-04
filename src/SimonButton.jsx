@@ -31,7 +31,7 @@ class SimonButton extends Component {
                 onClick={() => this.playAudio()}
                 onMouseUp={() => this.pressButton()}
             >
-                <img src={this.state.img}/>
+                <img alt={this.state.img} src={require(`./assets/images/${this.state.img}`)}/>
             </div>
         )
     }
